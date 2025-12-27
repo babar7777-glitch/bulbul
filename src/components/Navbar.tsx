@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
-import { CartDrawer } from "./CartDrawer";
 import bulbulLogo from "@/assets/bulbul-logo.svg";
+
+const CartDrawer = lazy(() => import("./CartDrawer").then(m => ({ default: m.CartDrawer })));
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -53,7 +54,9 @@ export function Navbar() {
 
             {/* Cart & Mobile Menu */}
             <div className="flex items-center gap-4">
-              <CartDrawer />
+              <Suspense fallback={<div className="w-10 h-10" />}>
+                <CartDrawer />
+              </Suspense>
 
               {/* Mobile Menu Button */}
               <Button

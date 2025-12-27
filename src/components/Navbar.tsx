@@ -24,8 +24,8 @@ export function Navbar() {
   return (
     <>
       {/* Skip to main content link for keyboard users */}
-      <a 
-        href="#main-content" 
+      <a
+        href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
       >
         Skip to main content
@@ -35,7 +35,7 @@ export function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center" aria-label="BulBul - Go to homepage">
-              <img src={bulbulLogo} alt="BulBul logo" className="h-12 w-auto" />
+              <img src={bulbulLogo} alt="BulBul logo" className="h-24" width="96" height="96" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -72,9 +72,9 @@ export function Navbar() {
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div 
+            <div
               id="mobile-menu"
-              className="md:hidden py-4 border-t border-border animate-fade-in" 
+              className="md:hidden py-4 border-t border-border animate-fade-in"
               role="menu"
             >
               {navLinks.map((link) => (

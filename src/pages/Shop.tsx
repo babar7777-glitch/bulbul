@@ -30,7 +30,7 @@ export default function Shop() {
 
       <main id="main-content" className="flex-1">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-peach/30 to-background py-12 md:py-16">
+        <section className="bg-gradient-to-br from-peach/30 to-background pt-12 pb-8 md:pt-16 md:pb-10">
           <div className="container mx-auto px-4 text-center">
             <h1 className="font-display text-4xl md:text-5xl text-primary mb-4">
               Shop DIY Kits
@@ -42,7 +42,7 @@ export default function Shop() {
         </section>
 
         {/* Products Grid */}
-        <section className="py-12 md:py-16 bg-background">
+        <section className="pt-8 pb-12 md:pt-10 md:pb-16 bg-background">
           <div className="container mx-auto px-4">
             {loading ? (
               <div className="flex items-center justify-center py-20">

@@ -21,12 +21,12 @@ export default function Gallery() {
 
       <main id="main-content" className="flex-1">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-peach/30 to-background pt-12 pb-8 md:pt-16 md:pb-10">
+        <section className="bg-gradient-to-br from-peach/30 to-background py-12 md:py-16">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="font-display text-4xl md:text-6xl text-primary mb-4">
+            <h1 className="font-display text-4xl md:text-6xl text-primary mb-6">
               Customer Creations
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
               See the beautiful artwork our community has created with BulBul kits.
             </p>
             <Button variant="outline" size="lg">
@@ -37,7 +37,7 @@ export default function Gallery() {
         </section>
 
         {/* Gallery Grid */}
-        <section className="pt-8 pb-12 md:pt-10 md:pb-16 bg-background">
+        <section className="py-12 md:py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {creations.map((creation) => (

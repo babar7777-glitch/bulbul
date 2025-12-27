@@ -42,7 +42,7 @@ export default function Index() {
                 make it love it
               </p>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Discover the joy of creating beautiful art with our curated DIY kits. 
+                Discover the joy of creating beautiful art with our curated DIY kits.
                 Each kit includes everything you need plus step-by-step video tutorials.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

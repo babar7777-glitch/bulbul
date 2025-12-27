@@ -9,9 +9,9 @@ export default function About() {
 
       <main id="main-content" className="flex-1">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-peach/30 to-background pt-12 pb-8 md:pt-16 md:pb-10">
+        <section className="bg-gradient-to-br from-peach/30 to-background py-12 md:py-16">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="font-display text-4xl md:text-6xl text-primary mb-4">
+            <h1 className="font-display text-4xl md:text-6xl text-primary mb-6">
               Our Story
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -21,7 +21,7 @@ export default function About() {
         </section>
 
         {/* Story */}
-        <section className="pt-8 pb-12 md:pt-10 md:pb-16 bg-background">
+        <section className="py-12 md:py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="font-display text-3xl text-foreground mb-6 text-center">
@@ -29,19 +29,19 @@ export default function About() {
               </h2>
               <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
                 <p>
-                  BulBul was born from a simple belief: everyone deserves the joy of creating 
-                  something beautiful with their own hands. Named after the melodious bulbul bird, 
+                  BulBul was born from a simple belief: everyone deserves the joy of creating
+                  something beautiful with their own hands. Named after the melodious bulbul bird,
                   we bring the same sense of wonder and delight to the world of DIY art.
                 </p>
                 <p>
-                  We understand that starting a creative project can feel overwhelming. 
-                  That's why we've carefully curated each kit to include everything you need—from 
-                  quality materials to detailed tutorials—so you can focus on what matters most: 
+                  We understand that starting a creative project can feel overwhelming.
+                  That's why we've carefully curated each kit to include everything you need—from
+                  quality materials to detailed tutorials—so you can focus on what matters most:
                   the joy of creating.
                 </p>
                 <p>
-                  Whether you're a complete beginner or a seasoned crafter, our kits are designed 
-                  to guide you through the process, step by step. No artistic experience required, 
+                  Whether you're a complete beginner or a seasoned crafter, our kits are designed
+                  to guide you through the process, step by step. No artistic experience required,
                   just a willingness to try something new and have fun!
                 </p>
               </div>
@@ -115,7 +115,7 @@ export default function About() {
                 <div className="bg-muted/50 rounded-xl p-6">
                   <h3 className="font-semibold text-lg mb-2">Stress Relief</h3>
                   <p className="text-muted-foreground text-base">
-                    Creating art is meditative. It helps you disconnect from daily stress 
+                    Creating art is meditative. It helps you disconnect from daily stress
                     and find peace in the present moment.
                   </p>
                 </div>
@@ -123,7 +123,7 @@ export default function About() {
                 <div className="bg-muted/50 rounded-xl p-6">
                   <h3 className="font-semibold text-lg mb-2">Sense of Achievement</h3>
                   <p className="text-muted-foreground text-base">
-                    There's nothing quite like the pride of creating something beautiful 
+                    There's nothing quite like the pride of creating something beautiful
                     with your own hands.
                   </p>
                 </div>
@@ -131,7 +131,7 @@ export default function About() {
                 <div className="bg-muted/50 rounded-xl p-6">
                   <h3 className="font-semibold text-lg mb-2">Screen-Free Time</h3>
                   <p className="text-muted-foreground text-base">
-                    Give your eyes and mind a break from screens while engaging 
+                    Give your eyes and mind a break from screens while engaging
                     in a fulfilling creative activity.
                   </p>
                 </div>
@@ -139,7 +139,7 @@ export default function About() {
                 <div className="bg-muted/50 rounded-xl p-6">
                   <h3 className="font-semibold text-lg mb-2">Personal Expression</h3>
                   <p className="text-muted-foreground text-base">
-                    Each piece you create is uniquely yours—a reflection of your 
+                    Each piece you create is uniquely yours—a reflection of your
                     creativity and personal style.
                   </p>
                 </div>

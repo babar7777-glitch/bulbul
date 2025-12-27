@@ -11,6 +11,7 @@ const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const About = lazy(() => import("./pages/About"));
 const Gallery = lazy(() => import("./pages/Gallery"));
 const FAQ = lazy(() => import("./pages/FAQ"));
+const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/coming-soon" element={<ComingSoon />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

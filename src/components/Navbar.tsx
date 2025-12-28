@@ -2,24 +2,20 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useCartStore } from "@/stores/cartStore";
-import { CartDrawer } from "./CartDrawer";
+import { StaticCartDrawer } from "./StaticCartDrawer";
 import bulbulLogo from "@/assets/bulbul-logo.svg";
 
 const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Coming Soon", path: "/coming-soon" },
-  { name: "Shop", path: "/shop" },
-  { name: "About", path: "/about" },
-  { name: "Gallery", path: "/gallery" },
-  { name: "FAQ", path: "/faq" },
+  { name: "Home 🏠", path: "/" },
+  { name: "Coming Soon ✨", path: "/coming-soon" },
+  { name: "Shop 🛍️", path: "/shop" },
+  { name: "About 💖", path: "/about" },
+  { name: "Gallery 🎨", path: "/gallery" },
+  { name: "FAQ ❓", path: "/faq" },
 ];
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const totalItems = useCartStore((state) =>
-    state.items.reduce((sum, item) => sum + item.quantity, 0)
-  );
 
   return (
     <>
@@ -39,12 +35,12 @@ export function Navbar() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="text-foreground/80 hover:text-primary transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-2 py-1"
+                  className="text-foreground/80 hover:text-primary transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-2 py-1 hover:scale-105 transform duration-200"
                 >
                   {link.name}
                 </Link>
@@ -53,7 +49,7 @@ export function Navbar() {
 
             {/* Cart & Mobile Menu */}
             <div className="flex items-center gap-4">
-              <CartDrawer />
+              <StaticCartDrawer />
 
               {/* Mobile Menu Button */}
               <Button

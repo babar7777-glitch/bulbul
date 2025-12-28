@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Heart, ShoppingBag, Sparkles } from "lucide-react";
 import type { StaticProduct } from "@/data/products";
 import { useState } from "react";
+import { useStaticCartStore } from "@/stores/staticCartStore";
+import { toast } from "sonner";
 
 interface StaticProductCardProps {
   product: StaticProduct;
@@ -10,11 +12,22 @@ interface StaticProductCardProps {
 
 export function StaticProductCard({ product }: StaticProductCardProps) {
   const [isLiked, setIsLiked] = useState(false);
+  const addItem = useStaticCartStore((state) => state.addItem);
 
   const categoryColors = {
     gold: "from-amber-500/20 to-yellow-500/20",
     rainbow: "from-purple-500/20 to-pink-500/20",
     premium: "from-emerald-500/20 to-teal-500/20",
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addItem(product, 1);
+    toast.success("Added to cart! 🎉", {
+      description: product.title,
+      position: "top-center",
+    });
   };
 
   return (
@@ -28,7 +41,11 @@ export function StaticProductCard({ product }: StaticProductCardProps) {
 
       {/* Like Button */}
       <button
-        onClick={() => setIsLiked(!isLiked)}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setIsLiked(!isLiked);
+        }}
         className="absolute top-3 right-3 z-10 p-2 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background transition-colors shadow-md"
       >
         <Heart
@@ -72,6 +89,7 @@ export function StaticProductCard({ product }: StaticProductCardProps) {
           <Button
             size="sm"
             className="gap-2 rounded-full px-4 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105"
+            onClick={handleAddToCart}
           >
             <ShoppingBag className="h-4 w-4" />
             Add to Cart

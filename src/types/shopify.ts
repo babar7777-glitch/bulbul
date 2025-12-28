@@ -43,7 +43,10 @@ export interface ShopifyProduct {
 }
 
 export interface CartItem {
-  product: ShopifyProduct;
+  productId: string;
+  productHandle: string;
+  productTitle: string;
+  productImage: string;
   variantId: string;
   variantTitle: string;
   price: {
@@ -51,7 +54,7 @@ export interface CartItem {
     currencyCode: string;
   };
   quantity: number;
-  selectedOptions: Array<{
+  selectedOptions?: Array<{
     name: string;
     value: string;
   }>;

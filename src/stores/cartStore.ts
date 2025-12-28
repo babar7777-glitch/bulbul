@@ -1,27 +1,23 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import type { CartItem } from "@/types/shopify";
-import { createStorefrontCheckout } from "@/lib/shopify";
 
 interface CartStore {
   items: CartItem[];
-  cartId: string | null;
-  checkoutUrl: string | null;
   isLoading: boolean;
   addItem: (item: CartItem) => void;
   updateQuantity: (variantId: string, quantity: number) => void;
   removeItem: (variantId: string) => void;
   clearCart: () => void;
   setLoading: (loading: boolean) => void;
-  createCheckout: () => Promise<void>;
+  getTotalItems: () => number;
+  getTotalPrice: () => number;
 }
 
 export const useCartStore = create<CartStore>()(
   persist(
     (set, get) => ({
       items: [],
-      cartId: null,
-      checkoutUrl: null,
       isLoading: false,
 
       addItem: (item) => {
@@ -61,25 +57,20 @@ export const useCartStore = create<CartStore>()(
       },
 
       clearCart: () => {
-        set({ items: [], cartId: null, checkoutUrl: null });
+        set({ items: [] });
       },
 
       setLoading: (isLoading) => set({ isLoading }),
 
-      createCheckout: async () => {
-        const { items, setLoading } = get();
-        if (items.length === 0) return;
+      getTotalItems: () => {
+        return get().items.reduce((total, item) => total + item.quantity, 0);
+      },
 
-        setLoading(true);
-        try {
-          const checkoutUrl = await createStorefrontCheckout(items);
-          set({ checkoutUrl });
-        } catch (error) {
-          console.error("Failed to create checkout:", error);
-          throw error;
-        } finally {
-          setLoading(false);
-        }
+      getTotalPrice: () => {
+        return get().items.reduce(
+          (total, item) => total + parseFloat(item.price.amount) * item.quantity,
+          0
+        );
       },
     }),
     {

@@ -8,48 +8,48 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Mail } from "lucide-react";
+import { Mail, MessageCircle, HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "What skill level do I need?",
+    question: "What skill level do I need? 🤔",
     answer:
-      "Our kits are designed for all skill levels! Each kit includes detailed instructions and video tutorials that guide you through every step. Whether you're a complete beginner or an experienced crafter, you'll be able to create something beautiful.",
+      "Absolutely NONE! 🎉 Our kits are designed for all skill levels! Each kit includes detailed instructions and video tutorials that guide you through every step. Whether you're a complete beginner or an experienced crafter, you'll be able to create something beautiful. Trust us, if you can use a sticker, you can do this! 💪",
   },
   {
-    question: "What's included in each kit?",
+    question: "What's included in each kit? 📦",
     answer:
-      "Every BulBul kit includes all the materials you need to complete the project: quality supplies, brushes, paints or materials specific to the kit, a printed step-by-step guide, and access to our detailed video tutorial. No need to buy anything extra!",
+      "Every BulBul kit is a complete creative package! ✨ You get: 5 premium foil sheets (gold or rainbow), pre-designed adhesive template, professional A4 wooden frame, complete tool kit (tweezers, brush, etc.), printed step-by-step guide, AND lifetime access to our video tutorial! No need to buy anything extra - we've got you covered! 💖",
   },
   {
-    question: "How do I access the video tutorials?",
+    question: "How do I access the video tutorials? 🎥",
     answer:
-      "Each kit comes with a unique access code and link to our video tutorial. Simply scan the QR code or visit the link provided in your kit, enter your code, and start creating! You'll have lifetime access to the tutorial.",
+      "Easy peasy! Each kit comes with a unique access code and QR code. Simply scan the QR code or visit the link provided in your kit, enter your code, and start creating! You'll have lifetime access to the tutorial, so you can pause, rewind, and re-watch as many times as you need. Take your time, bestie! 🌟",
   },
   {
-    question: "How long does shipping take?",
+    question: "How long does shipping take? 🚚",
     answer:
-      "We ship within Pakistan and delivery typically takes 3-7 business days depending on your location. You'll receive a tracking number once your order is shipped so you can follow its journey.",
+      "We ship all across Pakistan! 🇵🇰 Delivery typically takes 3-7 business days depending on your location. Major cities like Lahore, Karachi, Islamabad usually receive orders within 3-4 days! You'll receive a tracking number once your order is shipped so you can follow its journey. Exciting, right?! 📦✨",
   },
   {
-    question: "Can I gift a kit to someone?",
+    question: "Can I gift a kit to someone? 🎁",
     answer:
-      "Absolutely! Our kits make perfect gifts for creative souls. During checkout, you can add a gift message and choose to ship directly to the recipient. We also offer beautiful gift wrapping for a small additional fee.",
+      "YESSS! Our kits make the PERFECT gift! 💝 Whether it's for birthdays, Eid, or just because - they're guaranteed to bring a smile! During checkout, you can add a gift message and choose to ship directly to the recipient. We also offer beautiful gift wrapping for a small additional fee. Spread the joy! 🎉",
   },
   {
-    question: "What if I make a mistake?",
+    question: "What if I make a mistake? 😰",
     answer:
-      "Don't worry—mistakes are part of the creative process! Our tutorials include tips for fixing common mistakes. Remember, every piece of art is unique, and small imperfections often add character. If you need help, reach out to us on Instagram!",
+      "No worries at all! 🤗 Mistakes are part of the creative process and often make your piece unique! Our tutorials include tips for fixing common mistakes. Remember, there's no 'wrong' way to create art. Plus, you can always reach out to us on WhatsApp and we'll help you troubleshoot! We've got your back! 💪",
   },
   {
-    question: "Do you offer bundle deals?",
+    question: "Do you offer bundle deals? 💰",
     answer:
-      "Yes! We offer special pricing when you purchase multiple kits together. Check our shop page for current bundle offers, or contact us if you're interested in a custom bundle.",
+      "Yes, we do! 🎊 We offer special pricing when you purchase multiple kits together - perfect for gifting or hosting a DIY party! Check our shop page for current bundle offers, or message us on WhatsApp if you're interested in a custom bundle. We love making deals! 💖",
   },
   {
-    question: "Can I request a custom kit?",
+    question: "Can I request a custom design? ✏️",
     answer:
-      "We love hearing from our community! If you have an idea for a kit you'd like to see, reach out to us on Instagram or email. We're always looking for inspiration for new designs.",
+      "We LOVE hearing from our community! 💫 If you have an idea for a kit you'd like to see, reach out to us on Instagram or WhatsApp. We're always looking for inspiration for new designs. Who knows, your idea might become our next bestseller! 🌟",
   },
 ];
 
@@ -60,13 +60,23 @@ export default function FAQ() {
 
       <main id="main-content" className="flex-1">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-peach/30 to-background py-12 md:py-16">
-          <div className="container mx-auto px-4 text-center">
+        <section className="bg-gradient-to-br from-peach/40 via-background to-primary/10 py-12 md:py-16 relative overflow-hidden">
+          {/* Decorative elements */}
+          <div className="absolute top-10 left-10 text-4xl animate-bounce opacity-60">❓</div>
+          <div className="absolute top-20 right-20 text-3xl animate-pulse opacity-60">💡</div>
+          <div className="absolute bottom-10 right-1/4 text-2xl animate-bounce opacity-60">✨</div>
+          
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <HelpCircle className="h-4 w-4" />
+              Got Questions? 🤔
+            </div>
             <h1 className="font-display text-4xl md:text-6xl text-primary mb-6">
-              Frequently Asked Questions
+              FAQ 💬
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Got questions? We've got answers. If you don't find what you're looking for, feel free to reach out!
+              Got questions? We've got answers! If you don't find what you're looking for, 
+              we're just a WhatsApp message away! 💖
             </p>
           </div>
         </section>
@@ -80,12 +90,12 @@ export default function FAQ() {
                   <AccordionItem
                     key={index}
                     value={`item-${index}`}
-                    className="bg-card border border-border rounded-xl px-6"
+                    className="bg-card border border-border rounded-2xl px-6 hover:border-primary/30 transition-colors data-[state=open]:border-primary/30 data-[state=open]:shadow-md"
                   >
-                    <AccordionTrigger className="text-left font-semibold tracking-wide hover:text-primary">
+                    <AccordionTrigger className="text-left font-semibold tracking-wide hover:text-primary hover:no-underline py-5">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-base">
+                    <AccordionContent className="text-muted-foreground text-base pb-5 leading-relaxed">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -96,25 +106,49 @@ export default function FAQ() {
         </section>
 
         {/* Contact CTA */}
-        <section className="py-12 md:py-16 bg-muted/30">
+        <section className="py-12 md:py-16 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5">
           <div className="container mx-auto px-4 text-center">
+            <div className="text-5xl mb-4">🤗</div>
             <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
               Still Have Questions?
             </h2>
             <p className="text-muted-foreground text-base mb-8 max-w-xl mx-auto">
-              We're here to help! Reach out and we'll get back to you as soon as possible.
+              We're here to help! Reach out and we'll get back to you ASAP! 
+              We love chatting with our community! 💬✨
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg">
-                <a href="mailto:hello@bulbul.pk">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Email Us
+              <Button asChild size="lg" className="rounded-full gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white">
+                <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="h-5 w-5" />
+                  Chat on WhatsApp 💬
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link to="/shop">Browse Kits</Link>
+              <Button asChild variant="outline" size="lg" className="rounded-full">
+                <a href="mailto:hello@bulbul.pk">
+                  <Mail className="mr-2 h-5 w-5" />
+                  Email Us 📧
+                </a>
               </Button>
             </div>
+          </div>
+        </section>
+
+        {/* Shop CTA */}
+        <section className="py-12 md:py-16 bg-gradient-to-r from-primary to-secondary text-primary-foreground relative overflow-hidden">
+          <div className="absolute top-5 left-10 text-4xl opacity-30">🛍️</div>
+          <div className="absolute bottom-5 right-10 text-4xl opacity-30">✨</div>
+          
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <h2 className="font-display text-3xl md:text-4xl mb-4">
+              Ready to Start Creating? 🎨
+            </h2>
+            <p className="text-primary-foreground/90 text-base mb-8 max-w-xl mx-auto">
+              Browse our collection and find the perfect kit for you! 
+              Your creative journey starts here! 💖
+            </p>
+            <Button asChild size="lg" variant="secondary" className="rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105">
+              <Link to="/shop">Browse Kits 🛍️</Link>
+            </Button>
           </div>
         </section>
       </main>

@@ -4,14 +4,28 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { staticProducts } from "@/data/products";
 import { useState } from "react";
-import { ArrowLeft, Minus, Plus, ShoppingCart, Package, Play, FileText, Heart, Sparkles, Gift, Truck } from "lucide-react";
+import { ArrowLeft, Minus, Plus, ShoppingCart, Package, Play, FileText, Heart, Sparkles, Gift, Truck, ChevronLeft, ChevronRight } from "lucide-react";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { ReviewSection } from "@/components/ReviewSection";
+import { RelatedProducts } from "@/components/RelatedProducts";
+import { useStaticCartStore } from "@/stores/staticCartStore";
+import { toast } from "sonner";
 
 export default function StaticProductDetail() {
   const { handle } = useParams<{ handle: string }>();
   const [quantity, setQuantity] = useState(1);
   const [isLiked, setIsLiked] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const addItem = useStaticCartStore((state) => state.addItem);
 
   const product = staticProducts.find((p) => p.handle === handle);
+
+  // Create gallery images (using the main image + showing different angles perspective)
+  const galleryImages = product ? [
+    { url: product.image, alt: product.title },
+    { url: product.image, alt: `${product.title} - Kit Contents` },
+    { url: product.image, alt: `${product.title} - Close Up` },
+  ] : [];
 
   if (!product) {
     return (
@@ -19,7 +33,8 @@ export default function StaticProductDetail() {
         <Navbar />
         <main className="flex-1 flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-2xl font-semibold mb-4">Product not found 😢</h1>
+            <div className="text-6xl mb-4">😢</div>
+            <h1 className="text-2xl font-semibold mb-4">Product not found</h1>
             <Button asChild>
               <Link to="/shop">
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back to Shop
@@ -32,11 +47,27 @@ export default function StaticProductDetail() {
     );
   }
 
+  const handleAddToCart = () => {
+    addItem(product, quantity);
+    toast.success("Added to cart! 🎉", {
+      description: `${product.title} x ${quantity}`,
+      position: "top-center",
+    });
+  };
+
+  const nextImage = () => {
+    setSelectedImageIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setSelectedImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1 py-8 md:py-12">
-        <div className="container mx-auto px-4">
+      <main className="flex-1">
+        <div className="container mx-auto px-4 py-8 md:py-12">
           <Button asChild variant="ghost" className="mb-6 hover:bg-primary/10">
             <Link to="/shop">
               <ArrowLeft className="mr-2 h-4 w-4" /> Back to Shop
@@ -44,9 +75,9 @@ export default function StaticProductDetail() {
           </Button>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Image Section */}
+            {/* Image Gallery Section */}
             <div className="space-y-4">
-              <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 shadow-lg">
+              <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-primary/5 to-primary/10 shadow-lg group">
                 {product.badge && (
                   <div className="absolute top-4 left-4 z-10 bg-primary text-primary-foreground text-sm font-semibold px-4 py-2 rounded-full shadow-lg">
                     {product.badge}
@@ -62,11 +93,43 @@ export default function StaticProductDetail() {
                     }`}
                   />
                 </button>
+                
+                {/* Gallery Navigation */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background transition-all opacity-0 group-hover:opacity-100 shadow-md"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background transition-all opacity-0 group-hover:opacity-100 shadow-md"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+
                 <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-full object-cover"
+                  src={galleryImages[selectedImageIndex]?.url}
+                  alt={galleryImages[selectedImageIndex]?.alt}
+                  className="w-full h-full object-cover transition-transform duration-500"
                 />
+              </div>
+
+              {/* Thumbnail Gallery */}
+              <div className="flex gap-3 justify-center">
+                {galleryImages.map((img, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={`w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden border-2 transition-all ${
+                      selectedImageIndex === index
+                        ? "border-primary shadow-lg scale-105"
+                        : "border-transparent opacity-70 hover:opacity-100"
+                    }`}
+                  >
+                    <img src={img.url} alt={img.alt} className="w-full h-full object-cover" />
+                  </button>
+                ))}
               </div>
 
               {/* Trust badges */}
@@ -133,11 +196,24 @@ export default function StaticProductDetail() {
                   </span>
                 </div>
 
-                {/* Add to Cart */}
-                <Button size="lg" className="w-full text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
-                  <ShoppingCart className="mr-2 h-5 w-5" />
-                  Add to Cart 🛒
-                </Button>
+                {/* Add to Cart & WhatsApp */}
+                <div className="space-y-3">
+                  <Button 
+                    size="lg" 
+                    className="w-full text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                    onClick={handleAddToCart}
+                  >
+                    <ShoppingCart className="mr-2 h-5 w-5" />
+                    Add to Cart 🛒
+                  </Button>
+                  
+                  <WhatsAppButton
+                    productName={product.title}
+                    price={product.price}
+                    quantity={quantity}
+                    className="w-full text-lg rounded-full"
+                  />
+                </div>
               </div>
 
               {/* What's Included */}
@@ -182,19 +258,19 @@ export default function StaticProductDetail() {
 
               {/* Why Choose Us */}
               <div className="grid grid-cols-2 gap-3 text-center">
-                <div className="bg-background border border-border rounded-xl p-4">
+                <div className="bg-background border border-border rounded-xl p-4 hover:border-primary/30 transition-colors">
                   <span className="text-2xl mb-2 block">🎨</span>
                   <span className="text-xs text-muted-foreground">Beginner Friendly</span>
                 </div>
-                <div className="bg-background border border-border rounded-xl p-4">
+                <div className="bg-background border border-border rounded-xl p-4 hover:border-primary/30 transition-colors">
                   <span className="text-2xl mb-2 block">⏱️</span>
                   <span className="text-xs text-muted-foreground">2-3 Hours to Complete</span>
                 </div>
-                <div className="bg-background border border-border rounded-xl p-4">
+                <div className="bg-background border border-border rounded-xl p-4 hover:border-primary/30 transition-colors">
                   <span className="text-2xl mb-2 block">🎁</span>
                   <span className="text-xs text-muted-foreground">Perfect Gift Idea</span>
                 </div>
-                <div className="bg-background border border-border rounded-xl p-4">
+                <div className="bg-background border border-border rounded-xl p-4 hover:border-primary/30 transition-colors">
                   <span className="text-2xl mb-2 block">💬</span>
                   <span className="text-xs text-muted-foreground">WhatsApp Support</span>
                 </div>
@@ -202,6 +278,12 @@ export default function StaticProductDetail() {
             </div>
           </div>
         </div>
+
+        {/* Reviews Section */}
+        <ReviewSection />
+
+        {/* Related Products */}
+        <RelatedProducts currentProductHandle={product.handle} category={product.category} />
       </main>
       <Footer />
     </div>

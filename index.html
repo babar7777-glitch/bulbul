@@ -8,9 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Preload LCP image (logo) for faster rendering -->
-    <link rel="preload" href="/src/assets/bulbul-logo.svg" as="image" type="image/svg+xml" />
-
     <!-- DNS prefetch for any additional origins -->
     <link rel="dns-prefetch" href="https://cdn.shopify.com" />
 
@@ -29,6 +26,20 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@bulbul.diy" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- GitHub Pages SPA redirect handler -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
 
   <body>

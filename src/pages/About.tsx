@@ -26,7 +26,7 @@ export default function About() {
             <h2 className="font-display text-3xl text-coral mb-8 text-center">
               Why BulBul?
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="flex flex-col gap-6 max-w-3xl mx-auto">
               <div className="bg-card border border-border rounded-xl p-6">
                 <p className="text-muted-foreground leading-relaxed">
                   BulBul was born from a simple belief: everyone deserves the joy of creating

@@ -20,26 +20,30 @@ export default function About() {
           </div>
         </section>
 
-        {/* Story */}
+        {/* Story - 3 Cards */}
         <section className="py-12 md:py-16 bg-background">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-3xl text-foreground mb-6 text-center">
-                Why BulBul?
-              </h2>
-              <div className="prose prose-lg max-w-none text-muted-foreground space-y-6">
-                <p>
+            <h2 className="font-display text-3xl text-coral mb-8 text-center">
+              Why BulBul?
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <div className="bg-card border border-border rounded-xl p-6">
+                <p className="text-muted-foreground leading-relaxed">
                   BulBul was born from a simple belief: everyone deserves the joy of creating
                   something beautiful with their own hands. Named after the melodious bulbul bird,
                   we bring the same sense of wonder and delight to the world of DIY art.
                 </p>
-                <p>
+              </div>
+              <div className="bg-card border border-border rounded-xl p-6">
+                <p className="text-muted-foreground leading-relaxed">
                   We understand that starting a creative project can feel overwhelming.
                   That's why we've carefully curated each kit to include everything you need—from
                   quality materials to detailed tutorials—so you can focus on what matters most:
                   the joy of creating.
                 </p>
-                <p>
+              </div>
+              <div className="bg-card border border-border rounded-xl p-6">
+                <p className="text-muted-foreground leading-relaxed">
                   Whether you're a complete beginner or a seasoned crafter, our kits are designed
                   to guide you through the process, step by step. No artistic experience required,
                   just a willingness to try something new and have fun!
@@ -49,15 +53,14 @@ export default function About() {
           </div>
         </section>
 
-        {/* Values */}
+        {/* Values - 4 Cards */}
         <section className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="font-display text-3xl md:text-4xl text-center text-foreground mb-12">
+            <h2 className="font-display text-3xl md:text-4xl text-center text-coral mb-12">
               What We Believe
             </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-card border border-border rounded-xl p-6 text-center">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Heart className="h-8 w-8 text-primary" />
                 </div>
@@ -66,8 +69,7 @@ export default function About() {
                   Every kit is thoughtfully assembled to bring you joy.
                 </p>
               </div>
-
-              <div className="text-center">
+              <div className="bg-card border border-border rounded-xl p-6 text-center">
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Palette className="h-8 w-8 text-secondary" />
                 </div>
@@ -76,8 +78,7 @@ export default function About() {
                   No experience needed—just enthusiasm and curiosity.
                 </p>
               </div>
-
-              <div className="text-center">
+              <div className="bg-card border border-border rounded-xl p-6 text-center">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="h-8 w-8 text-primary" />
                 </div>
@@ -86,8 +87,7 @@ export default function About() {
                   Join a community of creators who inspire each other.
                 </p>
               </div>
-
-              <div className="text-center">
+              <div className="bg-card border border-border rounded-xl p-6 text-center">
                 <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Sparkles className="h-8 w-8 text-secondary" />
                 </div>
@@ -104,13 +104,12 @@ export default function About() {
         <section className="py-12 md:py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h2 className="font-display text-3xl md:text-4xl text-center text-foreground mb-6">
+              <h2 className="font-display text-3xl md:text-4xl text-center text-coral mb-6">
                 The Joy of Creating
               </h2>
               <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
                 Art isn't just about the finished piece—it's about the journey.
               </p>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-muted/50 rounded-xl p-6">
                   <h3 className="font-semibold text-lg mb-2">Stress Relief</h3>
@@ -119,7 +118,6 @@ export default function About() {
                     and find peace in the present moment.
                   </p>
                 </div>
-
                 <div className="bg-muted/50 rounded-xl p-6">
                   <h3 className="font-semibold text-lg mb-2">Sense of Achievement</h3>
                   <p className="text-muted-foreground text-base">
@@ -127,7 +125,6 @@ export default function About() {
                     with your own hands.
                   </p>
                 </div>
-
                 <div className="bg-muted/50 rounded-xl p-6">
                   <h3 className="font-semibold text-lg mb-2">Screen-Free Time</h3>
                   <p className="text-muted-foreground text-base">
@@ -135,7 +132,6 @@ export default function About() {
                     in a fulfilling creative activity.
                   </p>
                 </div>
-
                 <div className="bg-muted/50 rounded-xl p-6">
                   <h3 className="font-semibold text-lg mb-2">Personal Expression</h3>
                   <p className="text-muted-foreground text-base">

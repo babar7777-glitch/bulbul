@@ -24,7 +24,10 @@ export function ProductCard({ product }: ProductCardProps) {
     if (!firstVariant) return;
 
     addItem({
-      product,
+      productId: node.id,
+      productHandle: node.handle,
+      productTitle: node.title,
+      productImage: firstImage?.url || "",
       variantId: firstVariant.id,
       variantTitle: firstVariant.title,
       price: firstVariant.price,

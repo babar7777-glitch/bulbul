@@ -1,29 +1,10 @@
-import { useEffect, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ProductCard } from "@/components/ProductCard";
-import { fetchProducts } from "@/lib/shopify";
-import type { ShopifyProduct } from "@/types/shopify";
-import { Palette, Loader2 } from "lucide-react";
+import { LocalProductCard } from "@/components/LocalProductCard";
+import { products } from "@/data/products";
+import { Palette } from "lucide-react";
 
 export default function Shop() {
-  const [products, setProducts] = useState<ShopifyProduct[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadProducts() {
-      try {
-        const data = await fetchProducts(20);
-        setProducts(data);
-      } catch (error) {
-        console.error("Failed to load products:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadProducts();
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -44,14 +25,10 @@ export default function Shop() {
         {/* Products Grid */}
         <section className="py-12 md:py-16 bg-background">
           <div className="container mx-auto px-4">
-            {loading ? (
-              <div className="flex items-center justify-center py-20">
-                <Loader2 className="h-8 w-8 animate-spin text-primary" />
-              </div>
-            ) : products.length > 0 ? (
+            {products.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {products.map((product) => (
-                  <ProductCard key={product.node.id} product={product} />
+                  <LocalProductCard key={product.id} product={product} />
                 ))}
               </div>
             ) : (

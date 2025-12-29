@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Mail, MapPin } from "lucide-react";
-import bulbulLogo from "@/assets/bulbul-logo.svg";
+import bulbulLogo from "@/assets/bulbul-logo.png";
 
 export const Footer = forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
   function Footer(props, ref) {

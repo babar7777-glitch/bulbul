@@ -23,18 +23,19 @@ export default function Shop() {
         </section>
 
         {/* Products Grid */}
-        <section className="py-12 md:py-16 bg-background">
+        <section className="py-12 md:py-16 bg-background" aria-labelledby="products-heading">
           <div className="container mx-auto px-4">
+            <h2 id="products-heading" className="sr-only">All Products</h2>
             {products.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {products.map((product) => (
-                  <LocalProductCard key={product.id} product={product} />
+                {products.map((product, index) => (
+                  <LocalProductCard key={product.id} product={product} priority={index < 4} />
                 ))}
               </div>
             ) : (
               <div className="text-center py-20 bg-muted/30 rounded-2xl">
-                <Palette className="h-20 w-20 text-muted-foreground mx-auto mb-6" />
-                <h2 className="text-2xl font-semibold mb-3">No products found</h2>
+                <Palette className="h-20 w-20 text-muted-foreground mx-auto mb-6" aria-hidden="true" />
+                <h3 className="text-2xl font-semibold mb-3">No products found</h3>
                 <p className="text-muted-foreground text-base max-w-md mx-auto">
                   We're working on adding amazing DIY kits. Tell us what products you'd like to create!
                 </p>

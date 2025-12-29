@@ -29,8 +29,11 @@
     --popover: 30 40% 98%;
     --popover-foreground: 20 30% 20%;
 
-    --primary: 10 70% 50%; /* Coral red */
+    --primary: 10 70% 45%; /* Coral red - darkened for better text contrast */
     --primary-foreground: 0 0% 100%; /* Pure white for better contrast */
+    
+    /* High contrast variant for text on light backgrounds */
+    --primary-text: 10 70% 35%; /* Darker coral for text - WCAG AA compliant */
 
     --secondary: 25 60% 55%; /* Burnt orange */
     --secondary-foreground: 20 30% 10%; /* Dark chocolate for better contrast */

@@ -35,7 +35,7 @@ export function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center" aria-label="BulBul - Go to homepage">
-              <img src={bulbulLogo} alt="BulBul logo" className="h-24" width="96" height="96" />
+              <img src={bulbulLogo} alt="BulBul logo" className="h-12" width="48" height="48" />
             </Link>
 
             {/* Desktop Navigation */}

@@ -115,7 +115,7 @@ const ComingSoon = () => {
       ))}
 
       {/* Main content */}
-      <main className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto animate-fade-in">
+      <main id="main-content" className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto animate-fade-in">
         {/* Logo */}
         <img 
           src={bulbulLogo} 

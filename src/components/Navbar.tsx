@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
 import { CartDrawer } from "./CartDrawer";
-import bulbulLogo from "@/assets/bulbul-logo.svg";
+import bulbulLogo from "@/assets/bulbul-logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
